@@ -1,9 +1,7 @@
-package com.cabinet.models.Programare;
+package com.cabinet.models.programare;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class Programare {
@@ -51,7 +49,7 @@ public class Programare {
 
     @Override
     public String toString() {
-        return "Programare{" +
+        return "programare{" +
                 "dataProgramare=" + dataProgramare +
                 '}';
     }

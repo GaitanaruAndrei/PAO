@@ -1,14 +1,15 @@
 package com.cabinet.models.utilizatori;
 
 import com.cabinet.auth.Autentificare;
-import com.cabinet.models.Programare.Programare;
+import com.cabinet.models.programare.Programare;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class User implements Autentificare {
+public class User implements Autentificare, Serializable,Comparable<User> {
     private Integer id ;
     private String username;
     private String parola;
@@ -25,8 +26,11 @@ public class User implements Autentificare {
         this.telefon = "";
         this.adresa = "";
         this.programare = new ArrayList<>();
+
     }
-    public User(Integer id, String username, String parola, String nume, String telefon,  String adresa, List<Programare> programare) {
+
+
+    public User(Integer id, String username, String parola, String nume, String telefon, String adresa, List<Programare> programare) {
         this.id = id;
         this.username = username;
         this.parola = parola;
@@ -34,7 +38,9 @@ public class User implements Autentificare {
         this.telefon = telefon;
         this.adresa = adresa;
         this.programare = programare;
+
     }
+
     public  void adaugaProgramare()
     {
         Scanner sc = new Scanner(System.in);
@@ -67,16 +73,24 @@ public class User implements Autentificare {
     }
 
 
-
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
     @Override
-    public String getUsername() {
-        return null;
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
     public String getPassword() {
         return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
     }
 
     public Integer getId() {
@@ -142,5 +156,10 @@ public class User implements Autentificare {
                 ", adresa='" + adresa + '\'' +
                 ", programare=" + programare +
                 '}';
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return this.getNume().compareTo(user.nume);
     }
 }

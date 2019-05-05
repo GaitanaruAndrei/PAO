@@ -1,12 +1,11 @@
 package com.cabinet.models.medic;
 
-import com.cabinet.models.Programare.Programare;
+import com.cabinet.models.programare.Programare;
 
 import com.cabinet.models.utilizatori.User;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 public class Medic extends User {
     private String departament;
@@ -18,7 +17,8 @@ public class Medic extends User {
         this.specialitate = "";
     }
 
-    public Medic(Integer id, String username, String parola, String nume, String telefon, String adresa, List<Programare> programare, String departament, String specialitate) {
+
+    public Medic(Integer id, String username, String parola, String nume, String telefon, String adresa, List<Programare> programare, Date dataNastere, String departament, String specialitate) {
         super(id, username, parola, nume, telefon, adresa, programare);
         this.departament = departament;
         this.specialitate = specialitate;

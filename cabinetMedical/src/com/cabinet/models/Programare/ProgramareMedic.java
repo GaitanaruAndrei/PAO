@@ -1,7 +1,6 @@
-package com.cabinet.models.Programare;
+package com.cabinet.models.programare;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Scanner;
 
 public class ProgramareMedic extends Programare {

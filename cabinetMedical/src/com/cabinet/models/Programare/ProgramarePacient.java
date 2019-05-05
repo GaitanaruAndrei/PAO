@@ -1,7 +1,6 @@
-package com.cabinet.models.Programare;
+package com.cabinet.models.programare;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Scanner;
 
 public class ProgramarePacient extends  Programare {
@@ -11,6 +10,13 @@ public class ProgramarePacient extends  Programare {
     private Integer greutate;
     private Integer inaltime;
 
+    public ProgramarePacient(String numeMedic, Integer varsta, Integer greutate, Integer inaltime) {
+        this.numeMedic = numeMedic;
+        this.varsta = varsta;
+        this.greutate = greutate;
+        this.inaltime = inaltime;
+    }
+
     public ProgramarePacient(LocalDateTime dataProgramare, String numeMedic, Integer varsta, Integer greutate, Integer inaltime) {
         super(dataProgramare);
         this.numeMedic = numeMedic;
@@ -18,6 +24,7 @@ public class ProgramarePacient extends  Programare {
         this.greutate = greutate;
         this.inaltime = inaltime;
     }
+
     public ProgramarePacient()
     {
         super(null);

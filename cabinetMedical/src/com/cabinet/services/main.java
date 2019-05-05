@@ -1,24 +1,18 @@
 package com.cabinet.services;
 
 
-import com.cabinet.models.FisaMedicala.FisaMedicala;
-import com.cabinet.models.Programare.Programare;
-import com.cabinet.models.medic.Medic;
-import com.cabinet.models.pacienti.Pacient;
+import com.cabinet.models.pacienti.PacientBatran;
+import com.cabinet.models.plata.Card;
+import com.cabinet.models.plata.NotaPlata;
+import com.cabinet.models.programare.Programare;
 import com.cabinet.models.utilizatori.User;
 
-import javax.sound.midi.SysexMessage;
-import java.lang.reflect.InvocationTargetException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class main {
-    public static void main (String [] args)
-    {
+    public static void main(String[] args) {
 
+        /*
 System.out.println("------MENIU------");
 System.out.println("0.LOGIN MEDIC");
 System.out.println("1.LOGIN PACIENT ");
@@ -147,6 +141,7 @@ while (ok)
     }
 
 
+
 }
 
 
@@ -154,6 +149,37 @@ while (ok)
 
 
 
+
+
+//*/
+//        Calendar calendar =Calendar.getInstance();
+//        calendar.set(1997,2,12);
+//        Date dataNastere = calendar.getTime();
+//
+//        Programare programare = new Programare();
+//        programare.organizareProgramare();
+//        List<Programare> listaProgramare = new ArrayList<Programare>();
+//        listaProgramare.add(programare);
+//
+//
+//
+//        User user = new User(1,"a","b","c","d","aa",listaProgramare,dataNastere);
+//        StringBuilder stringBuilder= new StringBuilder("");
+//        stringBuilder.append(user.getId()).append(",").append(user.getUsername()).append(",").append(user.getPassword()).append(",").append(user.getNume()).
+//                append(",").append(user.getTelefon()).append(",").append(user.getAdresa()).append(",").append(user.getProgramare()
+//        ).append(",").append(user.getDataNastere());
+//        FileTextService.getInstance().writeTextToFile(stringBuilder.toString(), "/Users/GaitanaruAndrei/Desktop/librarymanagementjava/cabinetMedical/files/user.csv");
+//        User user2=new User();
+//        user2 =FileTextService.getInstance().readUserFromFile("/Users/GaitanaruAndrei/Desktop/librarymanagementjava/cabinetMedical/files/user.csv");
+//        FileSerializableService.getInstance().writeObjectToFile(user,"/Users/GaitanaruAndrei/Desktop/librarymanagementjava/cabinetMedical/files/user.csv");
+//        User user3 = new User();
+//        user3 =(User) FileSerializableService.getInstance().readObjectFromFile("/Users/GaitanaruAndrei/Desktop/librarymanagementjava/cabinetMedical/files/user.csv");
+//        System.out.println(user3);
+//
+        System.out.println(Service.getInstance().catiUtilizatoriSuntMedici());
+        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiBatrani());
+        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiCopil());
+        Service.getInstance().afiseazaUtilizatoriSortati();
 
 
 
