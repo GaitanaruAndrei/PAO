@@ -3,6 +3,8 @@ package com.cabinet.services;
 import com.cabinet.models.plata.NotaPlata;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileTextServiceNotaPlata {
 
@@ -17,7 +19,7 @@ public class FileTextServiceNotaPlata {
     public void writeTextToFile( String textToWrite , String fileNamePath){
 
         try {
-            PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileNamePath));
+            PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileNamePath,true));
             printWriter.println(textToWrite);
             printWriter.flush();
             printWriter.close();
@@ -26,16 +28,16 @@ public class FileTextServiceNotaPlata {
         }
     }
 
-    public  NotaPlata readTextFromFile(String fileNamePath){
+    public  NotaPlata readTextFromFile(String fileNamePath,Integer positionLine){
         NotaPlata nota = null;
         try {
-            LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(fileNamePath));
-            String line = lineNumberReader.readLine();
+            String line = Files.readAllLines(Paths.get("files/notaPlata.csv")).get(positionLine);
+
             String[] values = line.split(",");
 
             nota = new NotaPlata(values[0],Integer.parseInt(values[1]));
 
-            lineNumberReader.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

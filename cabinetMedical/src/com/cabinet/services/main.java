@@ -2,6 +2,7 @@ package com.cabinet.services;
 
 
 import com.cabinet.models.pacienti.PacientBatran;
+import com.cabinet.models.pacienti.Spitalizare;
 import com.cabinet.models.plata.Card;
 import com.cabinet.models.plata.NotaPlata;
 import com.cabinet.models.programare.Programare;
@@ -176,15 +177,24 @@ while (ok)
 //        user3 =(User) FileSerializableService.getInstance().readObjectFromFile("/Users/GaitanaruAndrei/Desktop/librarymanagementjava/cabinetMedical/files/user.csv");
 //        System.out.println(user3);
 //
+//        System.out.println(Service.getInstance().catiUtilizatoriSuntMedici());
+        //  System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiBatrani());
+        // System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiCopil());
+        //  Service.getInstance().afiseazaUtilizatoriSortati();
+
+
+//        Card card = new Card(12344,"Andrei");
+//        StringBuilder stringBuilder = new StringBuilder("");
+//        stringBuilder.append(card.getPin()).append(",").append(card.getNumeCard());
+//        FileTextServiceCard.getInstance().writeTextToFile(stringBuilder.toString(),"files/card.csv");
+//        FileTextServiceCard.getInstance().writeTextToFile(stringBuilder.toString(),"files/card.csv");
+
         System.out.println(Service.getInstance().catiUtilizatoriSuntMedici());
-        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiBatrani());
-        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiCopil());
+        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiBatran());
+        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientCopil());
+        Service.getInstance().afiseazaPacientDupaNume("nume3");
+        Service.getInstance().afiseazaMedicDupaNume("nume1");
+        Service.getInstance().afiseazaProgramariPacient("nume3");
         Service.getInstance().afiseazaUtilizatoriSortati();
-
-
-
-
-
-
     }
 }

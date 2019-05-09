@@ -3,6 +3,8 @@ package com.cabinet.services;
 import com.cabinet.models.fisa.Medicament;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileTextServiceMedicament {
 
@@ -17,7 +19,7 @@ public class FileTextServiceMedicament {
     public void writeTextToFile( String textToWrite , String fileNamePath){
 
         try {
-            PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileNamePath));
+            PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileNamePath,true));
             printWriter.println(textToWrite);
             printWriter.flush();
             printWriter.close();
@@ -26,16 +28,16 @@ public class FileTextServiceMedicament {
         }
     }
 
-    public Medicament readTextFromFile(String fileNamePath){
+    public Medicament readTextFromFile(String fileNamePath,Integer positionLine){
         Medicament medicament  = null;
         try {
-            LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(fileNamePath));
-            String line = lineNumberReader.readLine();
+            String line = Files.readAllLines(Paths.get("files/medicament.csv")).get(positionLine);
+
             String[] values = line.split(",");
 
             medicament = new Medicament(values[0]);
 
-            lineNumberReader.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

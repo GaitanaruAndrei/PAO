@@ -32,4 +32,37 @@ public class PacientBatran extends Pacient {
         this.factoriRisc = factoriRisc;
         this.antecedente = antecedente;
     }
+
+    public boolean isFumator() {
+        return fumator;
+    }
+
+    public void setFumator(boolean fumator) {
+        this.fumator = fumator;
+    }
+
+    public String getFactoriRisc() {
+        return factoriRisc;
+    }
+
+    public void setFactoriRisc(String factoriRisc) {
+        this.factoriRisc = factoriRisc;
+    }
+
+    public String getAntecedente() {
+        return antecedente;
+    }
+
+    public void setAntecedente(String antecedente) {
+        this.antecedente = antecedente;
+    }
+
+    @Override
+    public String toString() {
+        return "PacientBatran{" +
+                "fumator=" + fumator +
+                ", factoriRisc='" + factoriRisc + '\'' +
+                ", antecedente='" + antecedente + '\'' +
+                '}';
+    }
 }

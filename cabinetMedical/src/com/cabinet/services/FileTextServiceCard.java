@@ -4,6 +4,8 @@ import com.cabinet.models.fisa.Medicament;
 import com.cabinet.models.plata.Card;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileTextServiceCard {
     private static FileTextServiceCard ourInstance = new FileTextServiceCard();
@@ -17,7 +19,7 @@ public class FileTextServiceCard {
     public void writeTextToFile( String textToWrite , String fileNamePath){
 
         try {
-            PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileNamePath));
+            PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileNamePath, true));
             printWriter.println(textToWrite);
             printWriter.flush();
             printWriter.close();
@@ -26,19 +28,22 @@ public class FileTextServiceCard {
         }
     }
 
-    public Card readTextFromFile(String fileNamePath){
+    public Card readTextFromFile(String fileNamePath,Integer positionLine){
         Card card  = null;
         try {
-            LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(fileNamePath));
-            String line = lineNumberReader.readLine();
+            String line = Files.readAllLines(Paths.get("files/card.csv")).get(positionLine);
+
             String[] values = line.split(",");
 
             card = new Card(Integer.parseInt(values[0]),values[1]);
 
-            lineNumberReader.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        }catch (NullPointerException e)
+        {
             e.printStackTrace();
         }
 
