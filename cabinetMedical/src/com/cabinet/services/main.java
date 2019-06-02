@@ -8,6 +8,7 @@ import com.cabinet.models.plata.NotaPlata;
 import com.cabinet.models.programare.Programare;
 import com.cabinet.models.utilizatori.User;
 
+import java.sql.*;
 import java.util.*;
 
 public class main {
@@ -189,12 +190,44 @@ while (ok)
 //        FileTextServiceCard.getInstance().writeTextToFile(stringBuilder.toString(),"files/card.csv");
 //        FileTextServiceCard.getInstance().writeTextToFile(stringBuilder.toString(),"files/card.csv");
 
-        System.out.println(Service.getInstance().catiUtilizatoriSuntMedici());
-        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiBatran());
-        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientCopil());
-        Service.getInstance().afiseazaPacientDupaNume("nume3");
-        Service.getInstance().afiseazaMedicDupaNume("nume1");
-        Service.getInstance().afiseazaProgramariPacient("nume3");
-        Service.getInstance().afiseazaUtilizatoriSortati();
+//        System.out.println(Service.getInstance().catiUtilizatoriSuntMedici());
+//        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientiBatran());
+//        System.out.println(Service.getInstance().catiUtilizatoriSuntPacientCopil());
+//        Service.getInstance().afiseazaPacientDupaNume("nume3");
+//        Service.getInstance().afiseazaMedicDupaNume("nume1");
+//        Service.getInstance().afiseazaProgramariPacient("nume3");
+//        Service.getInstance().afiseazaUtilizatoriSortati();
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cabinet?serverTimezone=UTC","root","12345");
+            Statement statement = connection.createStatement();
+          ResultSet resultSet =  statement.executeQuery("select * from users");
+          ResultSetMetaData resultSetMetaData = resultSet.getMetaData();  // tot ce obtinem din query
+          for (int i =  1 ; i <resultSetMetaData.getColumnCount(); i++){
+              System.out.println(" column name   " +
+              resultSetMetaData.getColumnName(i)
+              +" column type  "+
+              resultSetMetaData.getColumnTypeName(i)
+
+              );
+          }
+          while (resultSet.next()){
+              System.out.println("id =  " +resultSet.getInt(1)+", username =  " + resultSet.getString(2));
+          }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (connection!=null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
+
 }
